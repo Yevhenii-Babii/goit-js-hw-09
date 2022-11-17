@@ -30,14 +30,20 @@ reject({position,delay})
   event.preventDefault();
 const delay = Number(refs.firstDelayEl.value);
 const stepDelay = Number(refs.stepDelayEl.value);
+for (i=0; i<refs.amountEl.value; i++) {
+  delayPromice = delay +stepDelay
+setTimeout(() => {
+  
 
-createPromise(position,delay)
+createPromise(i,delayPromice)
   .then(({ position, delay }) => {
     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
   });
+},  delayPromice);
+}
 
 
 
