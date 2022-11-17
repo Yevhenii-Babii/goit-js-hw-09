@@ -28,21 +28,20 @@ reject({position,delay})
 
  function onCreatePromiseClick (event) {
   event.preventDefault();
-const delay = Number(refs.firstDelayEl.value);
+let delay = Number(refs.firstDelayEl.value);
 const stepDelay = Number(refs.stepDelayEl.value);
-for (i=0; i<refs.amountEl.value; i++) {
-  delayPromice = delay +stepDelay
-setTimeout(() => {
-  
+const amountValue = Number(refs.amountEl.value)
+for (i=1; i < amountValue; i++) {
+  delay += stepDelay
 
-createPromise(i,delayPromice)
-  .then(({ position, delay }) => {
-    console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+createPromise(i,delay)
+  .then(({ position, delay }) => { setTimeout(() => {console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);},delay)
+    
   })
-  .catch(({ position, delay }) => {
-    console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+  .catch(({ position, delay }) => { setTimeout(()=>{console.log(`❌ Rejected promise ${position} in ${delay}ms`)},delay)
   });
-},  delayPromice);
+
+
 }
 
 
