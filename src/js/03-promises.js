@@ -22,8 +22,6 @@ reject({position,delay})
 
   return promise
 }
-
-
  refs.btnCreatePromise.addEventListener ('click', onCreatePromiseClick)
 
  function onCreatePromiseClick (event) {
@@ -31,7 +29,7 @@ reject({position,delay})
 let delay = Number(refs.firstDelayEl.value);
 const stepDelay = Number(refs.stepDelayEl.value);
 const amountValue = Number(refs.amountEl.value)
-for (i=1; i < amountValue; i++) {
+for (let i=1; i <= amountValue; i++) {
   delay += stepDelay
 
 createPromise(i,delay)
@@ -40,11 +38,5 @@ createPromise(i,delay)
   })
   .catch(({ position, delay }) => { setTimeout(()=>{console.log(`❌ Rejected promise ${position} in ${delay}ms`)},delay)
   });
-
-
 }
-
-
-
-
 }
