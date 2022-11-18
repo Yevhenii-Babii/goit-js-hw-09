@@ -30,13 +30,14 @@ let delay = Number(refs.firstDelayEl.value);
 const stepDelay = Number(refs.stepDelayEl.value);
 const amountValue = Number(refs.amountEl.value)
 for (let i=1; i <= amountValue; i++) {
-  delay += stepDelay
+  
 
 createPromise(i,delay)
   .then(({ position, delay }) => { setTimeout(() => {console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);},delay)
     
   })
   .catch(({ position, delay }) => { setTimeout(()=>{console.log(`❌ Rejected promise ${position} in ${delay}ms`)},delay)
-  });
+ });
+  delay += stepDelay
 }
 }
